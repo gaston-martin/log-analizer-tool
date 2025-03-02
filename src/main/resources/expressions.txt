@@ -1,0 +1,33 @@
+# Separar las expresiones con |
+# Usar regex|replacement (usando capture groups)
+(\[movement checkParameter: )(\[.*\])(\])|$1[...]$3
+( Movements created response )(\[.*\])(\])|$1[...]$3
+( setKeyWithRetrySafe key )(\S+ )(value )(\{.*\})|$1(...)$3{...}
+(site_id = )(M..)|$1Mxx
+(\[event:checkValidationTypes\] )(\[Move type )(\w+-\w+)( execute validator )(\w+Validator)(\])|$1$2(...)-(...)$4(...)Validator$6
+(Creating balance_logs, count )(\d)|$1n
+(\[source:BalanceCacheConsumerController\] \[event:check\])(.*)|$1(…)
+(\[source:BalanceCacheConsumerController\] \[event:check_tyc\])(.*)|$1(…)
+(\[Value NOT found for key: )([\w+-]+)|$1(...)]
+(\[event:get\] \[Found value for:)( \S+ )(- value:)(.*)|$1(...)$3(...)
+(\[event:setKeyWithRetrySafe\] \[key: )(\S+ )(SAVED!)(.*)|$1(...)$3
+( [\w-]+\d+ )(Recipe Valid:)(\w+ )(Reason:)(\S+ )(Scope:)(\S+ )(Recipe-ID:)(\S+)| (...) $2(...) $4(...) $6(...)$8(...)
+(\[event:multiPost\] KEY:)(\S+)(.+)|$1(...)(...)
+(\[event:multiPost\]\[status:400\]\[error:)(negative_balance] )(KEY:)(\S+)( .+)|$1(...)$3(...)(...)
+(\[event:multiPost\]\[status:409\] KEY:)(\S+)( .+)|$1(...)(...)
+(\[event:multipost\]\[error:)(.+)|$1(...)
+(openplatform-payments-api-)(\d)( Multiple Reference Ids = )(\d+)( Scope:)(\S+)|$1x$3x$5(...)
+(\[user_id:\d+\] )(\[type_user:\S+\] )(CC will be removed because it is not an international seller\.)|[user_id:(...)][type_user:(...)$3
+\[event:release\] \[TRACE \d+ - Starts release\]|[event:release] [TRACE (...) - Starts release]
+(\[service:release\]\[request_status:)(\d+)(\]\[release:)(.+\[.*\]\]\])(\[move_ids:)(\[.*\]\])(\[idemp_key:)(.*)(.client_id:)(\d+)(.)|$1(...)$3(...)$5(...)$7(...)$9(...)
+\[(event:release\] \[Saved key = )([\w-]+)\]|[$1(...)]
+(\[event:lock\] \[lock resource )(\S+)\]|$1(...)]
+(\[event:unlock\] \[unlock resource )(\S+)\]|$1(...)]
+(\[event:sendToBigqueue\] \[Successfully send to bigqueue = )\[id:\d+\]|$1[id: ...]
+(\[event:verifyAvailableBalanceToUnblock\] \[compare amount_to_unblock: )(\S+ )(vs current: )(\S+)\]|$1(...)$3(...)]
+(\[event:verifyAvailableBalanceToUnblock\] \[user_id: )(\d+)(\] amount_for_unblock:)(\S+)( - reason:)(\S+)|$1(...)$3(...)$5(...)
+(\[event:impactUnblockByAmountInBalanceDelta\] \[UnblockByAmount )(\S+)( - unblock user: )(\d+)]|$1(...)$3(...)]
+(\[event:multiPost\]\[status:400\] KEY:).+|$1(...)
+(\[event:multiPost\]\[status:500\]) .+|$1(...)
+( Invalid Recipe:)( \S+)( for client: )(\S+)|$1(...)$3(...)
+
